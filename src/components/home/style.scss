@@ -93,6 +93,13 @@
             }
         }
 
+        .empty{
+            font-style: italic;
+            color: $c-red;
+            font-size: 10px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
         .result{
             border-top: 1px dashed $c-grey;
             padding-top: 10px;
@@ -147,5 +154,64 @@
             }
         }
 
+        .recommendation{
+            border-top: 1px dashed $c-grey;
+            padding-top: 10px;
+            margin-top: 10px;
+            
+            &__list{
+                position: relative;
+                margin-top: 10px;
+
+                &__name{
+                    font-family: Arial, Helvetica, sans-serif;
+                    font-size: 10px;
+                    color: $c-dark-grey;
+                    margin: 0 0 5px 0;
+                }
+                
+                &__price{
+                    font-family: Arial, Helvetica, sans-serif;
+                    font-size: 10px;
+                    color: $c-blue;
+                    margin: 0 0 5px 0;
+                }
+    
+                &__buy{
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    border-radius: 4px;
+                    background-color: $c-green;
+                    color: $c-grey;
+                    width: 60px;
+                    line-height: 20px;
+                    font-size: 8px;
+                    padding: 0;
+                    border: none;
+                    cursor: pointer;
+                    outline: none;
+
+                    &:hover{
+                        opacity: 0.9;
+                    }
+                }
+
+                &__purchased{
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    border-radius: 4px;
+                    color: $c-blue;
+                    width: 60px;
+                    line-height: 20px;
+                    font-size: 8px;
+                    padding: 0;
+                    border: none;
+                    outline: none;
+                    text-align: center;
+                }
+            }
+        }
     }
 }

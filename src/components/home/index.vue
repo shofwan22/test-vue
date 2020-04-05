@@ -25,7 +25,16 @@
                     <span v-else class="result__list__purchased">Purchased</span>
                 </div>
             </div>
-                     
+            <p v-if="isEmpty" class="empty">Sorry, domain isn't available</p>
+
+            <div v-if="showRecommendation" class="recommendation">
+                <div v-for="(recommendation,index) in recommendations" :key="index" class="recommendation__list">
+                    <p class="recommendation__list__name">{{ recommendation.name }}</p>
+                    <p class="recommendation__list__price">{{ recommendation.price }}</p>
+                    <button v-if="!recommendation.status" class="recommendation__list__buy" @click="onClickBuy(recommendation)">Buy</button>
+                    <span v-else class="recommendation__list__purchased">Purchased</span>
+                </div>
+            </div>                     
         </div>
     </div>
 </template>
@@ -67,15 +76,34 @@ export default {
                 }
             ]            
         }
+    },
+    computed: {
+        isEmpty(){
+            return (this.keyword != '') && (this.results.length == 0) && (this.isSubmit == true)
+        },
+        showRecommendation(){
+            return (this.recommendations.length > 0) && (this.results.length == 0)
+        }
     },    
     methods: {
         onSearch(){
             this.isSubmit = true
             this.results = this.domainList.filter(domainList => (domainList.name.toLowerCase()) == this.keyword.toLowerCase())
+            this.getRecommendation()
+        },
+        getRecommendation(){
+            if(this.keyword != ''){
+                this.recommendations = this.domainList.filter(domainList => (domainList.name.toLowerCase()).includes(this.keyword.toLowerCase()))
+            }else{
+                this.recommendations = []
+            }
         },        
         onInput(){
             this.isSubmit = false
-        },        
+        },
+        onClickBuy(data){
+            data.status = true
+        }        
     }
 }
 </script>
