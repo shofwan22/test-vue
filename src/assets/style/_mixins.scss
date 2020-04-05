@@ -1,0 +1,24 @@
+@mixin mq-small-only{
+    @media only screen and (max-width: 767px){
+        @content;
+    }
+}
+
+@mixin mq-small-up{
+    @media only screen and (min-width: 768px){
+        @content;
+    }
+}
+
+@mixin mq-medium-only{
+    @media only screen and (max-width: 1023) and (min-width: 768px){
+        @content;
+    }
+}
+
+@mixin mq-medium-up{
+    @media only screen and (min-width: 1024){
+        @content;
+    }
+}
+

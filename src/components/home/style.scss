@@ -1,0 +1,98 @@
+@import '../../assets/style/_variable.scss';
+@import '../../assets/style/_mixins.scss';
+@import '../../assets/style/_icons.scss';
+
+*{
+    box-sizing: border-box;
+}
+
+.container{
+    background-color: $c-blue;
+    width: 100%;
+    height: 100vh;
+    position: relative;
+
+    .box{
+        width: 400px;
+        padding: 25px 25px 30px;
+        border-radius: 4px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        background-color: $c-white;
+
+        @include mq-small-only{
+            width: calc(100% - 32px);
+        }
+
+        .title{
+            color: $c-dark-grey;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .search{
+            &::after{
+                content: "";
+                display: table;
+                clear: both;
+            }
+
+            &__input{
+                display: block;
+                width: calc(100% - 100px);
+                float: left;
+                border: 1px solid $c-grey;
+                padding: 12px;
+                border-radius: 24px 0 0 24px;
+
+                @include mq-small-only{
+                    width: calc(100% - 90px);
+                }
+
+                &:focus{
+                    border-radius: 24px 0 0 24px;
+                    border: 1px solid $c-blue;
+                    outline: none;
+                }
+
+                &::placeholder{
+                    color: $c-grey;
+                }
+
+                &.error{
+                    border: 1px solid $c-red;
+                }
+            }
+
+            &__button{
+                display: block;
+                width: 100px;
+                float: left;
+                padding: 12px;
+                background-color: $c-blue;
+                border: 1px solid $c-blue;
+                color: $c-white;
+                border-radius: 0 24px 24px 0;
+                cursor: pointer;
+                outline: none;
+
+                @include mq-small-only{
+                    padding: 12px 10px;
+                    width: 90px;
+                }
+
+                &:hover{
+                    opacity: 0.9;
+                }
+            }
+        }
+
+
+    }
+}
